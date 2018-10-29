@@ -470,7 +470,7 @@ if (ENABLE_TRILINOS)
                                         -D TPL_ENABLE_MPI:BOOL=ON 
                                         -D BUILD_SHARED_LIBS:BOOL=ON
                                         -D CMAKE_POSITION_INDEPENDENT_CODE=${CMAKE_POSITION_INDEPENDENT_CODE}
-                                        -D CMAKE_BUILD_TYPE:STRING=RELEASE
+                                        -D CMAKE_BUILD_TYPE:STRING=${CMAKE_BUILD_TYPE}
                                         -D Trilinos_ENABLE_Fortran:BOOL=OFF 
                                         -D Trilinos_WARNINGS_AS_ERRORS_FLAGS:STRING="" 
                                         -D CMAKE_VERBOSE_MAKEFILE:BOOL=TRUE 
@@ -533,7 +533,7 @@ else()
                          INSTALL_DIR ${PARMETIS_DIR}
                          BUILD_COMMAND make -j ${NUM_PROC}
                          INSTALL_COMMAND make install
-                         CMAKE_ARGS -D CMAKE_BUILD_TYPE:STRING=RELEASE
+                         CMAKE_ARGS -D CMAKE_BUILD_TYPE:STRING=${CMAKE_BUILD_TYPE}
                                     -DGKLIB_PATH=../parmetis/metis/GKlib
                                     -DMETIS_PATH=../parmetis/metis
                                     -DCMAKE_C_COMPILER=${MPI_C_COMPILER}
@@ -554,7 +554,7 @@ else()
                          SOURCE_SUBDIR metis
                          BUILD_COMMAND make -j ${NUM_PROC}
                          INSTALL_COMMAND make install
-                         CMAKE_ARGS -D CMAKE_BUILD_TYPE:STRING=RELEASE
+                         CMAKE_ARGS -D CMAKE_BUILD_TYPE:STRING=${CMAKE_BUILD_TYPE}
                                     -DGKLIB_PATH=../metis/metis/GKlib
                                     -DCMAKE_C_COMPILER=${MPI_C_COMPILER}
                                     -DCMAKE_CXX_COMPILER=${MPI_CXX_COMPILER}
@@ -588,7 +588,7 @@ else()
                          DEPENDS parmetis metis
                          CMAKE_CACHE_ARGS -DTPL_PARMETIS_INCLUDE_DIRS:STRING=${CMAKE_INSTALL_PREFIX}/parmetis/include;${CMAKE_INSTALL_PREFIX}/metis/include
                                           -DTPL_PARMETIS_LIBRARIES:STRING=${CMAKE_INSTALL_PREFIX}/parmetis/lib/libparmetis.a;${CMAKE_INSTALL_PREFIX}/metis/lib/libmetis.a
-                         CMAKE_ARGS -D CMAKE_BUILD_TYPE:STRING=RELEASE
+                         CMAKE_ARGS -D CMAKE_BUILD_TYPE:STRING=${CMAKE_BUILD_TYPE}
                                     -DXSDK_INDEX_SIZE=64
                                     -DCMAKE_C_COMPILER=${MPI_C_COMPILER}
                                     -DCMAKE_CXX_COMPILER=${MPI_CXX_COMPILER}
