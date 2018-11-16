@@ -219,9 +219,11 @@ else()
                          DEPENDS ${HDF5_DEPENDENCIES}
                          CONFIGURE_COMMAND ../silo/configure CC=${MPI_C_COMPILER}
                                               CXX=${MPI_CXX_COMPILER}
+                                              "CFLAGS=$<$<CONFIG:Debug>:-g -fPIC>"
+                                              "CXXFLAGS=$<$<CONFIG:Debug>:-g -fPIC>"
                                               --prefix=<INSTALL_DIR>
                                               --disable-fortran
-                                              --enable-optimization
+                                              --enable-optimization$<$<CONFIG:Debug>:=no>
                                               --with-hdf5=${HDF5_DIR}/include,${HDF5_DIR}/lib
                                               LIBS=-ldl
                                               --disable-silex 
@@ -612,7 +614,7 @@ endif()
 set(HYPRE_DIR "${CMAKE_INSTALL_PREFIX}/hypre")
 set(HYPRE_URL "${TPL_MIRROR_DIR}/hypre-2.15.0.tar.gz")
 
-if (false)#EXISTS ${HYPRE_DIR})
+if (EXISTS ${HYPRE_DIR})
     message(STATUS "Using existing HYPRE found at ${HYPRE_DIR}")
     list(APPEND existing_list hypre )
 else()
