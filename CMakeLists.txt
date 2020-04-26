@@ -935,6 +935,7 @@ ${PETSC_MPI_FLAG}\n")
                          URL ${PETSC_URL}
                          PREFIX ${PROJECT_BINARY_DIR}/petsc #outer petsc directory
                          DEPENDS ${PETSC_DEPENDS}
+                         PATCH_COMMAND patch -p1 < ${TPL_MIRROR_DIR}/petsc-3.10.2-mpifix.patch
                          INSTALL_DIR ${PETSC_INSTALL_DIR}
                          CONFIGURE_COMMAND cd ../petsc && cat ${PROJECT_BINARY_DIR}/config_petsc_for_geosx && . ${PROJECT_BINARY_DIR}/config_petsc_for_geosx 
                          BUILD_COMMAND cd ../petsc && make -j ${NUM_PROC}
