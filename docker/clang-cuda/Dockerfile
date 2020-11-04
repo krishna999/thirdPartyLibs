@@ -32,7 +32,7 @@ ENV CC=/usr/local/bin/clang \
 ENV OMPI_CC=${CC} \
     OMPI_CXX=${CXX} 
 ENV ENABLE_CUDA=ON \
-    CMAKE_CUDA_FLAGS="-restrict -arch sm_70 --expt-extended-lambda -Werror cross-execution-space-call,reorder,deprecated-declarations"
+    CMAKE_CUDA_FLAGS="-restrict -arch sm_61 --expt-extended-lambda -Werror cross-execution-space-call,reorder,deprecated-declarations"
 
 # Installing TPL's
 FROM tpl_toolchain_intersect_geosx_toolchain AS tpl_toolchain
